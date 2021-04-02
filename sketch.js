@@ -15,7 +15,7 @@ function setup() {
   ground = new Ground(width/2,height,width,20);
 
   //create division objects
-  for (var k = 0; k <=80; k = k + 80) {
+  for (var k = 0; k <=800; k = k + 80) {
     divisions.push(new Divisions(k, height-divisionHeight/2, 10, divisionHeight));
   }
 
@@ -31,13 +31,14 @@ function setup() {
   }
 
   //create 3rd row of plinko objects
-
+  for (var j = 75; j <= width; j = j + 50) {
+    plinkos.push(new Plinko(j, 275));
+  }
   
   //create 4th row of plinko objects
-
-
-  //create particle objects
-  
+  for (var j = 50; j <= width - 10; j = j + 50) {
+  plinkos.push(new Plinko(j, 375));
+  }
     
 }
  
@@ -45,7 +46,9 @@ function setup() {
 
 function draw() {
   background("black");
-  textSize(20)
+  textSize(30)
+  textFont("Bahnschrift")
+  text("Score: " + score, 20,40)
  
   Engine.update(engine);
   ground.display();
@@ -60,6 +63,15 @@ function draw() {
     divisions[k].display();
   }
 
-  //display the paricles 
+  //create the particles
+  if (frameCount % 90 === 0) {
+    particles.push(new Particles((random(width/2 + 320, width/2 - 320)), 0, 10));
+    score ++;
+  }
+
+  //display the particles 
+  for (var m = 0; m < particles.length; m++) {
+    particles[m].display();
+  }
 
 }

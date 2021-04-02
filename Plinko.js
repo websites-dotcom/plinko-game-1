@@ -7,6 +7,7 @@ class Plinko {
         }
         this.r = 10;
         this.body = Bodies.circle(x, y, this.r, options);
+        this.color = color(random(20, 255), random(20, 255), random(20, 255));
         
         World.add(world, this.body);
     }
@@ -20,7 +21,7 @@ class Plinko {
         rotate(angle);
         imageMode(CENTER);
         noStroke();
-        fill("white");
+        fill(this.color);
         ellipseMode(RADIUS);
         ellipse(0,0,this.r,this.r);
         pop();

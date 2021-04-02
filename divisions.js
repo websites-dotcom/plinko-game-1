@@ -7,12 +7,13 @@ class Divisions {
         this.body = Bodies.rectangle(x, y, w, h, options);
         this.w = w;
         this.h = h;
+        this.color = color(random(20,155),random(20,255),255)
         World.add(world, this.body);
     }
     display() {
         var pos = this.body.position;
         rectMode(CENTER);
-        fill("white");
+        fill(this.color);
         rect(pos.x, pos.y, this.w, this.h);
     }
 };
